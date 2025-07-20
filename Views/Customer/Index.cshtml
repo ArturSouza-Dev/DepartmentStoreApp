@@ -1,0 +1,46 @@
+﻿@model List<DepartmentStoreApp.Models.Customer>
+
+@{
+    ViewData["Title"] = "CustomersIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    
+<h2>Customers</h2>
+
+<div id="grid"></div>     
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#grid").kendoGrid({
+                dataSource: {
+                    transport: {
+                        read: {
+                            url: "/Customer/GetCustomerData",
+                            dataType: "json"
+                        }
+                    },
+                    pageSize: 10
+                },
+                height: 400,
+                pageable: true,
+                sortable: true,
+                columns: [
+                    { field: "CId", title: "Customer ID", width: "50px" },
+                    { field: "CLast", title: "Last Name" },
+                    { field: "CFirst", title: "First Name" },
+                    { field: "CMi", title: "CMi" },
+                    { field: "CBirthdate", title: "Birth Date" },
+                    { field: "CAddress", title: "First Name" },
+                    { field: "CCity", title: "First Name" },
+                    { field: "CState", title: "First Name" },
+                    { field: "CZip", title: "First Name" },
+                    { field: "CDphone", title: "First Name" },
+                    { field: "CEphone", title: "First Name" },
+                    { field: "CUserid", title: "First Name" },
+                    { field: "CPassword", title: "First Name" },
+                ]
+            });
+        });
+    </script>
+}
