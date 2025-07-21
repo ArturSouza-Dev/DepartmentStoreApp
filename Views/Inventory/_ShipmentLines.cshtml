@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DepartmentStoreApp.Models.ShipmentLine>
+
+<div class="tab-pane" id="ShipmentLines">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Shipment ID</th>
+                <th>Inventory ID</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ShipId</td>
+                    <td>@item.InvId</td>
+                    <td>@item.SlQuantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

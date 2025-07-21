@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Inventory Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Inventory</h2>
+
+<div class="fui-box-body">
+    <ul class="fui-nav-list nav nav-tabs" id="csap-tabs">        
+        <li><a href="#" data-toggle="tab" data-tab="OrderLines">Order Lines</a></li>
+        <li><a href="#" data-toggle="tab" data-tab="ShipmentLines">Shipment Lines</a></li>        
+    </ul>
+    <div id="grid"></div>
+    <div class="tab-content">
+        <div id="tab-container" class="tab-pane active in"></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>        
+        $(document).ready(function () {
+            $("#grid").kendoGrid({
+                dataSource: {
+                    transport: {
+                        read: {
+                            url: "/Inventory/GetInventoryData",
+                            dataType: "json"
+                        }
+                    },
+                    pageSize: 10
+                },
+                height: 400,
+                pageable: true,
+                sortable: true,
+                columns: [
+                    { field: "InvId", title: "Inventory ID" },
+                    { field: "ItemId", title: "Item ID" },
+                    { field: "Color", title: "Color" },
+                    { field: "InvSize", title: "Inventory Size" },
+                    { field: "InvPrice", title: "Inventory Price" },
+                    { field: "InvQoh", title: "Quantity on Hand" },                                   
+                ]
+            });
+        });
+        // Handle tab clicks
+        $('#csap-tabs a').click(function (e) {
+            e.preventDefault();
+
+            var tab = $(this).data("tab");
+            var url = "/Inventory/LoadInventory" + tab;
+
+            // Highlight the selected tab
+            $('#csap-tabs li').removeClass("active");
+            $(this).parent().addClass("active");
+
+            // Load the partial view into the tab container
+            $("#tab-container").load(url);
+        });
+    </script>    
+}

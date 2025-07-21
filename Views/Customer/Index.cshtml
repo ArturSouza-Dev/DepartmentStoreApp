@@ -1,7 +1,5 @@
-﻿@model List<DepartmentStoreApp.Models.Customer>
-
-@{
-    ViewData["Title"] = "CustomersIndex";
+﻿@{
+    ViewData["Title"] = "Customers Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
     
@@ -26,19 +24,18 @@
                 pageable: true,
                 sortable: true,
                 columns: [
-                    { field: "CId", title: "Customer ID", width: "50px" },
+                    { field: "CId", title: "Customer ID" },
                     { field: "CLast", title: "Last Name" },
                     { field: "CFirst", title: "First Name" },
                     { field: "CMi", title: "CMi" },
                     { field: "CBirthdate", title: "Birth Date" },
-                    { field: "CAddress", title: "First Name" },
-                    { field: "CCity", title: "First Name" },
-                    { field: "CState", title: "First Name" },
-                    { field: "CZip", title: "First Name" },
-                    { field: "CDphone", title: "First Name" },
-                    { field: "CEphone", title: "First Name" },
-                    { field: "CUserid", title: "First Name" },
-                    { field: "CPassword", title: "First Name" },
+                    { field: "CAddress", title: "Address" },
+                    { field: "CCity", title: "City" },
+                    { field: "CState", title: "State" },
+                    { field: "CZip", title: "Zip Code" },
+                    { field: "CDphone", title: "Phone Number1" },
+                    { field: "CEphone", title: "Phone Number2" },
+                    { field: "CUserid", title: "User Id" },                    
                 ]
             });
         });
