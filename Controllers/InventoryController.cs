@@ -24,17 +24,18 @@ namespace DepartmentStoreApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult LoadInventoryOrderLines()
+        public ActionResult LoadRelatedRecords(string selectedTab, int invId)
         {
-            var model = _dbContext.OrderLines.ToList();
-            return PartialView("_OrderLines", model);
-        }
-
-        [HttpGet]
-        public ActionResult LoadInventoryShipmentLines()
-        {
-            var model = _dbContext.ShipmentLines.ToList();
-            return PartialView("_ShipmentLines", model);
+            if (selectedTab == "OrderLines")
+            {
+                var model = _dbContext.OrderLines.Where(ol => ol.InvId == invId).ToList();
+                return PartialView("_OrderLines", model);
+            }
+            else
+            {
+                var model = _dbContext.ShipmentLines.Where(sl => sl.InvId == invId).ToList();
+                return PartialView("_ShipmentLines", model);
+            }
         }
     }
 }
