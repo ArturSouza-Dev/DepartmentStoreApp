@@ -7,9 +7,9 @@
 
 <div class="fui-box-body">
     <div id="grid"></div>
-    <ul class="fui-nav-list nav nav-tabs" id="csap-tabs">        
+    <ul class="fui-nav-list nav nav-tabs" id="csap-tabs">
         <li><a href="#" data-toggle="tab" data-tab="OrderLines">Order Lines</a></li>
-        <li><a href="#" data-toggle="tab" data-tab="ShipmentLines">Shipment Lines</a></li>        
+        <li><a href="#" data-toggle="tab" data-tab="ShipmentLines">Shipment Lines</a></li>
     </ul>
     <div class="tab-content">
         <div id="tab-container" class="tab-pane active in"></div>
@@ -17,7 +17,8 @@
 </div>
 
 @section Scripts {
-    <script>        
+    <script>
+
         // Load Kendo Grid
         $(document).ready(function () {
             $("#grid").kendoGrid({
@@ -41,7 +42,7 @@
                     { field: "Color", title: "Color" },
                     { field: "InvSize", title: "Inventory Size" },
                     { field: "InvPrice", title: "Inventory Price" },
-                    { field: "InvQoh", title: "Quantity on Hand" }                                   
+                    { field: "InvQoh", title: "Quantity on Hand" }
                 ]
             });
         });
@@ -73,5 +74,5 @@
             // Load the partial view into the tab container
             $("#tab-container").load(url);
         });
-    </script>    
+    </script>
 }
